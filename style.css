@@ -39,12 +39,18 @@ main button:nth-of-type(1){
 .carousel {
     margin: 0 auto;
     padding: 20px 0;
-    /* max-width: 700px; */
-    width: 100%;
-    overflow: hidden;
+    max-width: 80vw;
+    width: 111%;
+    overflow-x: hidden;
     display: flex;
+
 }
 .carousel-kid{
+  background-image: url(images/carousel/god-of-war-video-game-3840x2160-13010.jpg);
+background-size: cover;
+background-repeat: no-repeat;
+filter: brightness(60%);
+
     width: 100%;
     color: white;
     border-radius: rgba(0, 0, 0, 10%) 5px 5px 20px 0;
@@ -52,24 +58,91 @@ main button:nth-of-type(1){
     font-size: xx-large;
     justify-content: center;
     align-items: center;
-    min-height: 200px;
+    min-height: 500px;
 
-    &:nth-child(1) {
-      background: #7958ff;
-    }
-
-    &:nth-child(2) {
-      background: #5d34f2;
-    }
-
-    &:nth-child(3) {
-      background: #4300da;
-    }
+    
 }
+.carousel-kid:nth-child(1) {
+background-image: url(images/carousel/god-of-war-video-game-3840x2160-13010.jpg);
+background-size: cover;
+background-repeat: no-repeat;
+}
+
+/* .carousel-kid:nth-child(2) {
+  background: #5d34f2;
+}
+
+.carousel-kid:nth-child(3) {
+  background: #4300da;
+}
+.carousel-kid:nth-child(4) {
+  background: #3700b8;
+}
+.carousel-kid:nth-child(5) {
+  background: #2a018a;
+}
+.carousel-kid:nth-child(5) {
+  background: #1f0164;
+}
+.carousel-kid:nth-child(6) {
+  background: #130040;
+} */
 .carousel> * {
 
     
       flex: 0 0 100%;
     
   }
+.carousel-kid {
+    will-change: transform;
+    animation: scrolling 30s linear infinite;
+    /* height: 100%; */
+  }
 
+@keyframes scrolling {
+    0% {
+      transform: translateX(0);
+    }
+    13%{
+      transform: translateX(0);
+    }
+    15% {
+      transform: translateX(-100%);
+    }
+    28%{
+      transform: translateX(-100%);
+    }
+    30%{
+      transform: translateX(-200%);
+    }
+    42%{
+      transform: translateX(-200%);
+    }
+    45%{
+      transform: translateX(-300%);
+    }
+    58%{
+      transform: translateX(-300%);
+    }
+    60%{
+      transform: translateX(-400%);
+    }
+    72%{
+      transform: translateX(-400%);
+    }
+    75%{
+      transform: translateX(-500%);
+    }
+    88%{
+      transform: translateX(-500%);
+    }
+    90%{
+      transform: translateX(-600%);
+    }
+    99%{
+      transform: translateX(-600%);
+    }
+    100%{
+      transform: translateX(0);
+    }
+  }
