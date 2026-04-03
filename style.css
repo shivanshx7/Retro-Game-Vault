@@ -45,28 +45,29 @@ main button:nth-of-type(1){
     display: flex;
 
 }
-.carousel-kid{
-  background-image: url(images/carousel/god-of-war-video-game-3840x2160-13010.jpg);
-background-size: cover;
-background-repeat: no-repeat;
-filter: brightness(60%);
-
-    width: 100%;
-    color: white;
-    border-radius: rgba(0, 0, 0, 10%) 5px 5px 20px 0;
-    padding: 20px;
-    font-size: xx-large;
-    justify-content: center;
-    align-items: center;
-    min-height: 500px;
-
-    
+.carousel-kid {
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 500px;
+  color: white;
 }
-.carousel-kid:nth-child(1) {
+.carousel-kid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+.carousel-kid p {
+  position: relative;
+  z-index: 2;
+}
+/* .carousel-kid:nth-child(1) {
 background-image: url(images/carousel/god-of-war-video-game-3840x2160-13010.jpg);
 background-size: cover;
 background-repeat: no-repeat;
-}
+} */
 
 /* .carousel-kid:nth-child(2) {
   background: #5d34f2;
@@ -98,7 +99,10 @@ background-repeat: no-repeat;
     animation: scrolling 30s linear infinite;
     /* height: 100%; */
   }
-
+.carouselRating{
+  filter: brightness(100%);
+  z-index: 20;
+}
 @keyframes scrolling {
     0% {
       transform: translateX(0);
