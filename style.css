@@ -158,11 +158,29 @@ background-repeat: no-repeat;
   z-index: 20;
   position: relative;
 }
+#pc-games>div{
+  display: flex;
+  height: 100%;
+  width: 100%;
+  transition: all 0.5s ease;
+  z-index: 20;
+  position: relative;
+}
 #most-popular>div:hover{
 
 filter: brightness(70%);
 }
+#pc-games>div:hover{
+  filter: brightness(70%);
+}
 #most-popular>div>h3{
+  position: absolute;
+  bottom:0px;
+  left: 10px;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px #151515;
+}
+#pc-games>div>h3{
   position: absolute;
   bottom:0px;
   left: 10px;
