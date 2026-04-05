@@ -35,13 +35,9 @@ Retro-Game-Vault is a sleek, high-performance search engine for video games, spa
 <pre>
 Retro-Game-Vault/
 ├── index.html        # Main entry point
-├── css/
-│   └── styles.css    # Grid layouts and Compare Mode UI
-├── js/
-│   ├── main.js       # UI Logic & Event Listeners
-│   ├── api.js        # Fetch logic & Debounce
-│   └── storage.js    # LocalStorage / Wishlist management
-└── assets/           # Icons and placeholders
+├── styles.css    # UI styling
+├── script.js       # UI Logic & Event Listeners and logic
+└── images/          # Icons and images
 </pre>
 
 ---
