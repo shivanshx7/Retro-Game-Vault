@@ -117,8 +117,33 @@ async function PCgamesApp() {
     
 
 }
+
+
+const PS5games = document.getElementById('ps5-games')
+
+async function PS5gamesApp() {
+    let fetched = await fetch('https://api.rawg.io/api/games?key=713715bfecfd475486ed3f7ef8803ade&platforms=187')
+    fetched = await fetched.json()
+    let k = 0
+    fetched.results.reverse()
+
+    for (i of fetched.results){
+        if (k !== 1 ){
+            PS5games.innerHTML += `<div><h3>${i.name}</h3><img src=${i.background_image} ></div>`
+        }
+        k += 1
+    }
+
+
+    console.log(fetched.results)
+
+    
+
+}
+
 mostPopularApp()
 PCgamesApp()
+PS5gamesApp()
 // fetch(url)
 // .then(x => x.json())
 // .then(x => console.log(x.results[0].background_image))
