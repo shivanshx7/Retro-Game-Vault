@@ -100,12 +100,12 @@ mostPopularApp()
 const PCgames = document.getElementById('pc-games')
 
 async function PCgamesApp() {
-    let fetched = await fetch('https://api.rawg.io/api/games?key=713715bfecfd475486ed3f7ef8803ade&platforms=186')
+    let fetched = await fetch('https://api.rawg.io/api/games?key=713715bfecfd475486ed3f7ef8803ade&platforms=4')
     fetched = await fetched.json()
     let k = 0
 
     for (i of fetched.results){
-        if (k >= 2 ){
+        if (k >= 9 ){
             PCgames.innerHTML += `<div><h3>${i.name}</h3><img src=${i.background_image} ></div>`
         }
         k += 1
