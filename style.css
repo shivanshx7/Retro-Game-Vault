@@ -134,27 +134,22 @@ background-repeat: no-repeat;
   font-weight: bold;
 
 }
-#most-popular,#pc-games,#ps5-games{
+#most-popular,#pc-games,#ps5-games,#action-games{
   height: 250px;
   display: flex;
   gap: 15px;
   overflow-x: auto;
 
+
 }
-#most-popular>div>img{
+#action-games
+#most-popular>div>img,#action-games>div>img,#pc-games>div>img,#ps5-games>div>img{
   height: 100%;
   width: 416px;
 
 }
-#pc-games>div>img{
-  height: 100%;
-  width: 416px;
-}
-#ps5-games>div>img{
-  height: 100%;
-  width: 416px;
-}
-#most-popular>div{
+
+#most-popular>div,#action-games>div,#pc-games>div,#ps5-games>div{
   display: flex;
   height: 100%;
   width: 100%;
@@ -162,53 +157,21 @@ background-repeat: no-repeat;
   z-index: 20;
   position: relative;
 }
-#pc-games>div{
-  display: flex;
-  height: 100%;
-  width: 100%;
-  transition: all 0.5s ease;
-  z-index: 20;
-  position: relative;
-}
-#ps5-games>div{
-  display: flex;
-  height: 100%;
-  width: 100%;
-  transition: all 0.5s ease;
-  z-index: 20;
-  position: relative;
-}
-#most-popular>div:hover{
+
+#most-popular>div:hover,#action-games>div:hover,#pc-games>div:hover,#ps5-games>div:hover{
 
 filter: brightness(70%);
 }
-#pc-games>div:hover{
-  filter: brightness(70%);
-}
-#ps5-games>div:hover{
-  filter: brightness(70%);
-}
-#most-popular>div>h3{
+
+#most-popular>div>h3,#action-games>div>h3,#pc-games>div>h3,#ps5-games>div>h3{
   position: absolute;
   bottom:0px;
   left: 10px;
   color: #ffffff;
   text-shadow: 2px 2px 4px #151515;
 }
-#pc-games>div>h3{
-  position: absolute;
-  bottom:0px;
-  left: 10px;
-  color: #ffffff;
-  text-shadow: 2px 2px 4px #151515;
-}
-#ps5-games>div>h3{
-  position: absolute;
-  bottom:0px;
-  left: 10px;
-  color: #ffffff;
-  text-shadow: 2px 2px 4px #151515;
-}
+
+
 @keyframes scrolling {
     0% {
       transform: translateX(0);
