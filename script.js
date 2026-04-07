@@ -144,7 +144,7 @@ async function PS5gamesApp() {
 const ACTIONgames = document.getElementById('action-games')
 
 async function ACTIONgamesApp() {
-    let fetched = await fetch('https://api.rawg.io/api/games?key=713715bfecfd475486ed3f7ef8803ade&platforms=4&genres=action')
+    let fetched = await fetch('https://api.rawg.io/api/games?key=713715bfecfd475486ed3f7ef8803ade&platforms=4,187,186&genres=action')
     fetched = await fetched.json()
     let k = 0
     fetched.results.reverse()
@@ -162,10 +162,32 @@ async function ACTIONgamesApp() {
     
 
 }
+const ADVENTUREgames = document.getElementById('adventure-games')
+
+async function ADVENTUREgamesApp() {
+    let fetched = await fetch('https://api.rawg.io/api/games?key=713715bfecfd475486ed3f7ef8803ade&platforms=4,187,186&genres=adventure')
+    fetched = await fetched.json()
+    let k = 0
+    fetched.results.reverse()
+
+    for (i of fetched.results){
+        if (k !== 1 ){
+            ADVENTUREgames.innerHTML += `<div><h3>${i.name}</h3><img src=${i.background_image} ></div>`
+        }
+        k += 1
+    }
+
+
+    console.log(fetched.results)
+
+    
+}
+
 mostPopularApp()
 PCgamesApp()
 PS5gamesApp()
 ACTIONgamesApp()
+ADVENTUREgamesApp()
 // fetch(url)
 // .then(x => x.json())
 // .then(x => console.log(x.results[0].background_image))
