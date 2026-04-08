@@ -31,7 +31,7 @@
         </div>
         <section class="card-parent ">
             <h2 id="search-for"></h2>
-            <div id="search-output"></div>
+            <div id="search-output"><h1 style="color: white;text-align: center;">loading...</h1></div>
         </section>
     </main>
     <script src="script.js"></script>
@@ -51,6 +51,7 @@
 
     let fetched = await fetch(`https://api.rawg.io/api/games?key=713715bfecfd475486ed3f7ef8803ade&search=${query}`)
     let data = await fetched.json()
+    SearchOutput.innerHTML = ""
 
     console.log(data)
 
