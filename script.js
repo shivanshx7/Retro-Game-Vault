@@ -182,7 +182,24 @@ async function ADVENTUREgamesApp() {
 
     
 }
+const SearchInput = document.getElementById('search-input')
+const SearchButton =  document.getElementById('search-button')
 
+async function SearchApp() {
+    
+
+    async function cb() {
+        let fetched = await fetch(`https://api.rawg.io/api/games?key=713715bfecfd475486ed3f7ef8803ade&search=${SearchInput.value.replace(/\s+/g, "+")}`)
+        fetched = await fetched.json()
+        console.log(fetched)
+    }
+
+
+    SearchButton.addEventListener("click",cb)
+    
+    
+}
+SearchApp()
 mostPopularApp()
 PCgamesApp()
 PS5gamesApp()
