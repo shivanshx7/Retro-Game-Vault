@@ -195,7 +195,9 @@ async function SearchApp() {
     }
 
 
-    SearchButton.addEventListener("click",cb)
+    SearchButton.addEventListener("click",() => {
+    window.location.href = "searchOutput.html"
+})
     
     
 }
