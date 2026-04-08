@@ -183,20 +183,23 @@ async function ADVENTUREgamesApp() {
     
 }
 const SearchInput = document.getElementById('search-input')
-const SearchButton =  document.getElementById('search-button')
-
+const SearchButton = document.getElementById('search-button')
 async function SearchApp() {
     
 
     async function cb() {
         let fetched = await fetch(`https://api.rawg.io/api/games?key=713715bfecfd475486ed3f7ef8803ade&search=${SearchInput.value.replace(/\s+/g, "+")}`)
         fetched = await fetched.json()
-        console.log(fetched)
+        console.log(fetched) 
     }
 
 
-    SearchButton.addEventListener("click",() => {
-    window.location.href = "searchOutput.html"
+    SearchButton.addEventListener("click",async () => {
+        const query = SearchInput.value.trim()
+        window.location.href = `searchOutput.html?search=${encodeURIComponent(query)}`
+        
+
+        
 })
     
     

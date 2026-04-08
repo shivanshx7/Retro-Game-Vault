@@ -134,7 +134,7 @@ background-repeat: no-repeat;
   font-weight: bold;
 
 }
-#most-popular,#pc-games,#ps5-games,#action-games,#adventure-games{
+#most-popular,#pc-games,#ps5-games,#action-games,#adventure-games,#search-output{
   height: 250px;
   display: flex;
   gap: 15px;
@@ -143,13 +143,13 @@ background-repeat: no-repeat;
 
 }
 
-#most-popular>div>img,#action-games>div>img,#pc-games>div>img,#ps5-games>div>img,#adventure-games>div>img{
+#most-popular>div>img,#action-games>div>img,#pc-games>div>img,#ps5-games>div>img,#adventure-games>div>img,#search-output>div>img{
   height: 100%;
   width: 416px;
 
 }
 
-#most-popular>div,#action-games>div,#pc-games>div,#ps5-games>div,#adventure-games>div{
+#most-popular>div,#action-games>div,#pc-games>div,#ps5-games>div,#adventure-games>div,#search-output>div{
   display: flex;
   height: 100%;
   width: 100%;
@@ -158,12 +158,12 @@ background-repeat: no-repeat;
   position: relative;
 }
 
-#most-popular>div:hover,#action-games>div:hover,#pc-games>div:hover,#ps5-games>div:hover,#adventure-games>div:hover{
+#most-popular>div:hover,#action-games>div:hover,#pc-games>div:hover,#ps5-games>div:hover,#adventure-games>div:hover,#search-output>div:hover{
 
 filter: brightness(70%);
 }
 
-#most-popular>div>h3,#action-games>div>h3,#pc-games>div>h3,#ps5-games>div>h3,#adventure-games>div>h3{
+#most-popular>div>h3,#action-games>div>h3,#pc-games>div>h3,#ps5-games>div>h3,#adventure-games>div>h3,#search-output>div>h3{
   position: absolute;
   bottom:0px;
   left: 10px;

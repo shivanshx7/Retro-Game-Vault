@@ -4,8 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+    #search-output{
+        height: fit-content;
+        flex-wrap: wrap;
+        overflow-x: auto;
+    }
+    #search-output>div{
+        width: auto;
+        height: auto;
+    }
+</style>
+     
 </head>
 <body>
-    <h1>Hiii</h1>
+    <nav>
+        <img src="images/kk/Retro-removebg-preview.png" width="100%">
+    </nav>
+    <main>
+        <div id='searcher'>
+            <input id="search-input" type="text" placeholder="Search here">
+            <button id="search-button" ><i class="fa fa-search"></i> </button>
+            <div id="search-suggestion"></div>
+        </div>
+        <section class="card-parent ">
+            <h2 id="search-for"></h2>
+            <div id="search-output"></div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+
+    const SearchFor = document.getElementById('search-for')
+    const SearchOutput = document.getElementById('search-output')
+
+
+    const params = new URLSearchParams(window.location.search)
+    const query = params.get("search")
+
+
+    SearchFor.textContent = `Searched for ${query}`
+
+
+    let fetched = await fetch(`https://api.rawg.io/api/games?key=713715bfecfd475486ed3f7ef8803ade&search=${query}`)
+    let data = await fetched.json()
+
+    console.log(data)
+
+
+    data.results.forEach(game => {
+        SearchOutput.innerHTML += `<div><h3>${game.name}</h3><img src=${game.background_image} ></div>`
+    })
+
+})</script>
 </body>
 </html>
