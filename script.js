@@ -93,8 +93,82 @@ async function mostPopularApp() {
 
     console.log(fetched.results)
 
-    
+    let all = document.querySelectorAll("#most-popular>div")
+
+for (let i = 0; i < fetched.results.length; i++) {
+
+    all[i].addEventListener("click", () => {
+
+        let game = fetched.results[i]
+
+        
+        let pop = document.createElement('div')
+        pop.style.position = 'fixed'
+        pop.style.top = '50%'
+        pop.style.left = '50%'
+        pop.style.transform = 'translate(-50%, -50%)'
+        pop.style.height = '80%'
+        pop.style.width = '80%'
+        pop.style.backgroundColor = '#343434'
+        pop.style.color = 'white'
+        pop.style.padding = '20px'
+        pop.style.zIndex = '1000'
+        pop.style.overflowY = 'auto'
+
+        let closeBtn = document.createElement('button')
+        closeBtn.textContent = 'X'
+        closeBtn.style.position = 'absolute'
+        closeBtn.style.top = '10px'
+        closeBtn.style.right = '10px'
+
+        closeBtn.addEventListener("click", () => pop.remove())
+
+        let title = document.createElement('h1')
+        title.textContent = game.name
+
+        let bg = document.createElement('img')
+        bg.src = game.background_image
+        bg.style.width = '100%'
+        bg.style.borderRadius = '10px'
+
+        let rating = document.createElement('p')
+        rating.textContent = `⭐ Rating: ${game.rating}`
+
+        let genres = document.createElement('p')
+        genres.textContent = "Genres: " + game.genres.map(g => g.name).join(", ")
+
+        let platforms = document.createElement('p')
+        platforms.textContent = "Platforms: " + game.platforms.map(p => p.platform.name).join(", ")
+
+        let released = document.createElement('p')
+        released.textContent = `Released: ${game.released}`
+
+        pop.appendChild(closeBtn)
+        pop.appendChild(title)
+        pop.appendChild(bg)
+        pop.appendChild(rating)
+        pop.appendChild(genres)
+        pop.appendChild(platforms)
+        pop.appendChild(released)
+
+        document.body.appendChild(pop)
+
+        
+    })
 }
+
+        closeBtn.addEventListener("click", () => {
+            pop.remove()
+        })
+
+
+        pop.appendChild(closeBtn)
+
+        document.body.appendChild(pop)
+    }
+
+
+
 mostPopularApp()
 
 const PCgames = document.getElementById('pc-games')
@@ -102,17 +176,90 @@ const PCgames = document.getElementById('pc-games')
 async function PCgamesApp() {
     let fetched = await fetch('https://api.rawg.io/api/games?key=713715bfecfd475486ed3f7ef8803ade&platforms=4')
     fetched = await fetched.json()
-    let k = 0
+    const games = fetched.results.slice(9)  
 
-    for (i of fetched.results){
-        if (k >= 9 ){
-            PCgames.innerHTML += `<div><h3>${i.name}</h3><img src=${i.background_image} ></div>`
-        }
-        k += 1
-    }
+for (let i = 0; i < games.length; i++) {
+
+    PCgames.innerHTML += `<div>
+        <h3>${games[i].name}</h3>
+        <img src=${games[i].background_image}>
+    </div>`
+}
 
 
     console.log(fetched.results)
+let all = document.querySelectorAll("#pc-games>div")
+
+for (let i = 0; i < games.length; i++) {
+
+    all[i].addEventListener("click", () => {
+
+        const game = games[i]
+
+        
+        let pop = document.createElement('div')
+        pop.style.position = 'fixed'
+        pop.style.top = '50%'
+        pop.style.left = '50%'
+        pop.style.transform = 'translate(-50%, -50%)'
+        pop.style.height = '80%'
+        pop.style.width = '80%'
+        pop.style.backgroundColor = '#343434'
+        pop.style.color = 'white'
+        pop.style.padding = '20px'
+        pop.style.zIndex = '1000'
+        pop.style.overflowY = 'auto'
+
+        let closeBtn = document.createElement('button')
+        closeBtn.textContent = 'X'
+        closeBtn.style.position = 'absolute'
+        closeBtn.style.top = '10px'
+        closeBtn.style.right = '10px'
+
+        closeBtn.addEventListener("click", () => pop.remove())
+
+        let title = document.createElement('h1')
+        title.textContent = game.name
+
+        let bg = document.createElement('img')
+        bg.src = game.background_image
+        bg.style.width = '100%'
+        bg.style.borderRadius = '10px'
+
+        let rating = document.createElement('p')
+        rating.textContent = `⭐ Rating: ${game.rating}`
+
+        let genres = document.createElement('p')
+        genres.textContent = "Genres: " + game.genres.map(g => g.name).join(", ")
+
+        let platforms = document.createElement('p')
+        platforms.textContent = "Platforms: " + game.platforms.map(p => p.platform.name).join(", ")
+
+        let released = document.createElement('p')
+        released.textContent = `Released: ${game.released}`
+
+        pop.appendChild(closeBtn)
+        pop.appendChild(title)
+        pop.appendChild(bg)
+        pop.appendChild(rating)
+        pop.appendChild(genres)
+        pop.appendChild(platforms)
+        pop.appendChild(released)
+
+        document.body.appendChild(pop)
+
+        
+    })
+}
+
+        closeBtn.addEventListener("click", () => {
+            pop.remove()
+        })
+
+
+        pop.appendChild(closeBtn)
+
+        document.body.appendChild(pop)
 
     
 
@@ -124,19 +271,92 @@ const PS5games = document.getElementById('ps5-games')
 async function PS5gamesApp() {
     let fetched = await fetch('https://api.rawg.io/api/games?key=713715bfecfd475486ed3f7ef8803ade&platforms=187')
     fetched = await fetched.json()
-    let k = 0
     fetched.results.reverse()
+    fetched.results.splice(1, 1)
+    const games = fetched.results
 
-    for (i of fetched.results){
-        if (k !== 1 ){
-            PS5games.innerHTML += `<div><h3>${i.name}</h3><img src=${i.background_image} ></div>`
-        }
-        k += 1
-    }
+for (let i = 0; i < games.length; i++) {
 
+    PS5games.innerHTML += `<div>
+        <h3>${games[i].name}</h3>
+        <img src=${games[i].background_image}>
+    </div>`
+}
 
     console.log(fetched.results)
+let all = document.querySelectorAll("#ps5-games>div")
 
+for (let i = 0; i < games.length; i++) {
+
+    all[i].addEventListener("click", () => {
+
+        const game = games[i]
+
+        
+        let pop = document.createElement('div')
+        pop.style.position = 'fixed'
+        pop.style.top = '50%'
+        pop.style.left = '50%'
+        pop.style.transform = 'translate(-50%, -50%)'
+        pop.style.height = '80%'
+        pop.style.width = '80%'
+        pop.style.backgroundColor = '#343434'
+        pop.style.color = 'white'
+        pop.style.padding = '20px'
+        pop.style.zIndex = '1000'
+        pop.style.overflowY = 'auto'
+
+        let closeBtn = document.createElement('button')
+        closeBtn.textContent = 'X'
+        closeBtn.style.position = 'absolute'
+        closeBtn.style.top = '10px'
+        closeBtn.style.right = '10px'
+
+        closeBtn.addEventListener("click", () => pop.remove())
+
+        let title = document.createElement('h1')
+        title.textContent = game.name
+
+        let bg = document.createElement('img')
+        bg.src = game.background_image
+        bg.style.width = '100%'
+        bg.style.borderRadius = '10px'
+
+        let rating = document.createElement('p')
+        rating.textContent = `⭐ Rating: ${game.rating}`
+
+        let genres = document.createElement('p')
+        genres.textContent = "Genres: " + game.genres.map(g => g.name).join(", ")
+
+        let platforms = document.createElement('p')
+        platforms.textContent = "Platforms: " + game.platforms.map(p => p.platform.name).join(", ")
+
+        let released = document.createElement('p')
+        released.textContent = `Released: ${game.released}`
+
+        pop.appendChild(closeBtn)
+        pop.appendChild(title)
+        pop.appendChild(bg)
+        pop.appendChild(rating)
+        pop.appendChild(genres)
+        pop.appendChild(platforms)
+        pop.appendChild(released)
+
+        
+
+        closeBtn.addEventListener("click", () => {
+            pop.remove()
+        })
+
+
+        pop.appendChild(closeBtn)
+
+        document.body.appendChild(pop)
+        
+    })
+}
+
+        
     
 
 }
@@ -146,18 +366,92 @@ const ACTIONgames = document.getElementById('action-games')
 async function ACTIONgamesApp() {
     let fetched = await fetch('https://api.rawg.io/api/games?key=713715bfecfd475486ed3f7ef8803ade&platforms=4,187,186&genres=action')
     fetched = await fetched.json()
-    let k = 0
     fetched.results.reverse()
+    fetched.results.splice(1,1)
+        const games = fetched.results
 
-    for (i of fetched.results){
-        if (k !== 1 ){
-            ACTIONgames.innerHTML += `<div><h3>${i.name}</h3><img src=${i.background_image} ></div>`
-        }
-        k += 1
-    }
+for (let i = 0; i < games.length; i++) {
 
+    ACTIONgames.innerHTML += `<div>
+        <h3>${games[i].name}</h3>
+        <img src=${games[i].background_image}>
+    </div>`
+}
 
     console.log(fetched.results)
+let all = document.querySelectorAll("#action-games>div")
+
+for (let i = 0; i < games.length; i++) {
+
+    all[i].addEventListener("click", () => {
+
+        const game = games[i]
+
+        
+        let pop = document.createElement('div')
+        pop.style.position = 'fixed'
+        pop.style.top = '50%'
+        pop.style.left = '50%'
+        pop.style.transform = 'translate(-50%, -50%)'
+        pop.style.height = '80%'
+        pop.style.width = '80%'
+        pop.style.backgroundColor = '#343434'
+        pop.style.color = 'white'
+        pop.style.padding = '20px'
+        pop.style.zIndex = '1000'
+        pop.style.overflowY = 'auto'
+
+        let closeBtn = document.createElement('button')
+        closeBtn.textContent = 'X'
+        closeBtn.style.position = 'absolute'
+        closeBtn.style.top = '10px'
+        closeBtn.style.right = '10px'
+
+        closeBtn.addEventListener("click", () => pop.remove())
+
+        let title = document.createElement('h1')
+        title.textContent = game.name
+
+        let bg = document.createElement('img')
+        bg.src = game.background_image
+        bg.style.width = '100%'
+        bg.style.borderRadius = '10px'
+
+        let rating = document.createElement('p')
+        rating.textContent = `⭐ Rating: ${game.rating}`
+
+        let genres = document.createElement('p')
+        genres.textContent = "Genres: " + game.genres.map(g => g.name).join(", ")
+
+        let platforms = document.createElement('p')
+        platforms.textContent = "Platforms: " + game.platforms.map(p => p.platform.name).join(", ")
+
+        let released = document.createElement('p')
+        released.textContent = `Released: ${game.released}`
+
+        pop.appendChild(closeBtn)
+        pop.appendChild(title)
+        pop.appendChild(bg)
+        pop.appendChild(rating)
+        pop.appendChild(genres)
+        pop.appendChild(platforms)
+        pop.appendChild(released)
+
+        
+
+        closeBtn.addEventListener("click", () => {
+            pop.remove()
+        })
+
+
+        pop.appendChild(closeBtn)
+
+        document.body.appendChild(pop)
+        
+    })
+}
+
+
 
     
 
@@ -170,15 +464,89 @@ async function ADVENTUREgamesApp() {
     let k = 0
     fetched.results.reverse()
 
-    for (i of fetched.results){
-        if (k !== 1 ){
-            ADVENTUREgames.innerHTML += `<div><h3>${i.name}</h3><img src=${i.background_image} ></div>`
-        }
-        k += 1
-    }
+            const games = fetched.results
 
+for (let i = 0; i < games.length; i++) {
+
+    ADVENTUREgames.innerHTML += `<div>
+        <h3>${games[i].name}</h3>
+        <img src=${games[i].background_image}>
+    </div>`
+}
 
     console.log(fetched.results)
+let all = document.querySelectorAll("#adventure-games>div")
+
+for (let i = 0; i < games.length; i++) {
+
+    all[i].addEventListener("click", () => {
+
+        const game = games[i]
+
+        
+        let pop = document.createElement('div')
+        pop.style.position = 'fixed'
+        pop.style.top = '50%'
+        pop.style.left = '50%'
+        pop.style.transform = 'translate(-50%, -50%)'
+        pop.style.height = '80%'
+        pop.style.width = '80%'
+        pop.style.backgroundColor = '#343434'
+        pop.style.color = 'white'
+        pop.style.padding = '20px'
+        pop.style.zIndex = '1000'
+        pop.style.overflowY = 'auto'
+
+        let closeBtn = document.createElement('button')
+        closeBtn.textContent = 'X'
+        closeBtn.style.position = 'absolute'
+        closeBtn.style.top = '10px'
+        closeBtn.style.right = '10px'
+
+        closeBtn.addEventListener("click", () => pop.remove())
+
+        let title = document.createElement('h1')
+        title.textContent = game.name
+
+        let bg = document.createElement('img')
+        bg.src = game.background_image
+        bg.style.width = '100%'
+        bg.style.borderRadius = '10px'
+
+        let rating = document.createElement('p')
+        rating.textContent = `⭐ Rating: ${game.rating}`
+
+        let genres = document.createElement('p')
+        genres.textContent = "Genres: " + game.genres.map(g => g.name).join(", ")
+
+        let platforms = document.createElement('p')
+        platforms.textContent = "Platforms: " + game.platforms.map(p => p.platform.name).join(", ")
+
+        let released = document.createElement('p')
+        released.textContent = `Released: ${game.released}`
+
+        pop.appendChild(closeBtn)
+        pop.appendChild(title)
+        pop.appendChild(bg)
+        pop.appendChild(rating)
+        pop.appendChild(genres)
+        pop.appendChild(platforms)
+        pop.appendChild(released)
+
+        
+
+        closeBtn.addEventListener("click", () => {
+            pop.remove()
+        })
+
+
+        pop.appendChild(closeBtn)
+
+        document.body.appendChild(pop)
+        
+    })
+}
+
 
     
 }
@@ -192,7 +560,7 @@ async function SearchApp() {
         fetched = await fetched.json()
         console.log(fetched) 
     }
-
+    
 
     SearchButton.addEventListener("click",async () => {
         const query = SearchInput.value.trim()
@@ -210,6 +578,8 @@ PCgamesApp()
 PS5gamesApp()
 ACTIONgamesApp()
 ADVENTUREgamesApp()
+
+
 // fetch(url)
 // .then(x => x.json())
 // .then(x => console.log(x.results[0].background_image))

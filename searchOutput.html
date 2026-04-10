@@ -59,6 +59,83 @@
     data.results.forEach(game => {
         SearchOutput.innerHTML += `<div><h3>${game.name}</h3><img src=${game.background_image} ></div>`
     })
+    const games = data.results
+
+
+
+    // console.log(fetched.results)
+let all = document.querySelectorAll("#search-output>div")
+
+for (let i = 0; i < games.length; i++) {
+
+    all[i].addEventListener("click", () => {
+
+        const game = games[i]
+
+        
+        let pop = document.createElement('div')
+        pop.style.position = 'fixed'
+        pop.style.top = '50%'
+        pop.style.left = '50%'
+        pop.style.transform = 'translate(-50%, -50%)'
+        pop.style.height = '80%'
+        pop.style.width = '80%'
+        pop.style.backgroundColor = '#343434'
+        pop.style.color = 'white'
+        pop.style.padding = '20px'
+        pop.style.zIndex = '1000'
+        pop.style.overflowY = 'auto'
+
+        let closeBtn = document.createElement('button')
+        closeBtn.textContent = 'X'
+        closeBtn.style.position = 'absolute'
+        closeBtn.style.top = '10px'
+        closeBtn.style.right = '10px'
+
+        closeBtn.addEventListener("click", () => pop.remove())
+
+        let title = document.createElement('h1')
+        title.textContent = game.name
+
+        let bg = document.createElement('img')
+        bg.src = game.background_image
+        bg.style.width = '100%'
+        bg.style.borderRadius = '10px'
+
+        let rating = document.createElement('p')
+        rating.textContent = `⭐ Rating: ${game.rating}`
+
+        let genres = document.createElement('p')
+        genres.textContent = "Genres: " + game.genres.map(g => g.name).join(", ")
+
+        let platforms = document.createElement('p')
+        platforms.textContent = "Platforms: " + game.platforms.map(p => p.platform.name).join(", ")
+
+        let released = document.createElement('p')
+        released.textContent = `Released: ${game.released}`
+
+        
+        pop.appendChild(title)
+        pop.appendChild(bg)
+        pop.appendChild(rating)
+        pop.appendChild(genres)
+        pop.appendChild(platforms)
+        pop.appendChild(released)
+
+        
+
+        closeBtn.addEventListener("click", () => {
+            pop.remove()
+        })
+
+
+        pop.appendChild(closeBtn)
+
+        document.body.appendChild(pop)
+        
+    })
+}
+
 
 })</script>
 </body>
