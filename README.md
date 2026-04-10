@@ -30,14 +30,15 @@ Retro-Game-Vault is a sleek, high-performance search engine for video games, spa
 - Intersection Observer (Optional) for lazy-loading game images.
 
 ---
-### (Probable) Folder-Structure
+### Folder-Structure
 
 <pre>
 Retro-Game-Vault/
 ├── index.html        # Main entry point
 ├── styles.css    # UI styling
 ├── script.js       # UI Logic & Event Listeners and logic
-└── images/          # Icons and images
+├── images/          # Icons and images
+└── searchOutput.html # search output
 </pre>
 
 ---
