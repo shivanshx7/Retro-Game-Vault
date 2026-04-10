@@ -170,7 +170,9 @@ filter: brightness(70%);
   color: #ffffff;
   text-shadow: 2px 2px 4px #151515;
 }
-
+.card-parent > div {
+  cursor: pointer;
+}
 
 @keyframes scrolling {
     0% {
